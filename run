@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+trap 'retcode=$?; echo 1>&2 "ERROR ($retcode)"; exit $retcode' ERR
+
+#   `export DR=docker` if you do not wish to use `sudo` to run `docker`.
+DR="${DR:-sudo docker}"
+
+tarball='paper-23.tar.gz'
+image='oopsla23-paper-23-ae:latest'
+
+####################################################################
+
+die() {
+    local exitcode="$?"; shift
+    echo 1>&2 "ERROR:" "$@"
+    trap '' ERR
+    exit "$exitcode"
+}
+
+####################################################################
+
+PROJDIR=$(cd "$(dirname "$0")" && pwd -P)
+cd "$PROJDIR"
+
+[[ -s $tarball ]] || {
+    echo "===== Downloading image"
+    curl -L -O "https://zenodo.org/records/7503088/files/$tarball?download=1"
+}
+
+[[ $DR = *sudo* ]] && sudo -v -p '[sudo] password for %p (to run docker): '
+$DR version >/dev/null || die 1 "Cannot run docker."
+
+[[ -z $($DR image ls -q "$image") ]] && {
+    echo "===== Loading image"
+    $DR image load -i paper-23.tar.gz
+}
+
+echo "===== Running container (/mnt contains this dir)"
+$DR run --name oopsla23 --rm -it -v "$PROJDIR":/mnt:rw "$image" bash -l
+
+trap '' ERR; echo OK
