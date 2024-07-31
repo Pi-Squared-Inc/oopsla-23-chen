@@ -23,7 +23,11 @@ The `/mnt/sample` directory contains a small toy imperative language, IMP,
 and some programs written in it on which you can test this.
 
     cd /mnt/sample
-    python3 -m scripts.prove_symbolic imp.k IMP assign.imp --output assign.out
+    psym imp.k IMP assign.imp --output out.assign/
+    metamath out.assign/goal.mm         # give this REPL `verify proof *`
+
+You should see the final claim appear, and a number of Metamath (`*.mm`) files
+appear in the `out.assign/` subdirectory.
 
 
 
