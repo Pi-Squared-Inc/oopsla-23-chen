@@ -12,6 +12,19 @@ mounted in the container as `/mnt`. (You can place/edit any files you
 like in this directory to use them in the container; updates made
 outside the container will be seen immediately inside it.)
 
+When you enter the container you should first run the following to do
+some additional setup, including setting up convenient aliases for
+useful scripts. You may edit the file to add additional personal
+configuration as well.
+
+    . /mnt/container-setup.bash
+
+The `/mnt/sample` directory contains a small toy imperative language, IMP,
+and some programs written in it on which you can test this.
+
+    cd /mnt/sample
+    python3 -m scripts.prove_symbolic imp.k IMP assign.imp --output assign.out
+
 
 
 <!-------------------------------------------------------------------->
