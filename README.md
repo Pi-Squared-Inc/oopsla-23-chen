@@ -8,9 +8,14 @@ Program Verifier"][paper] by Lin, Chen, Trinh, Wang, Rosu. The artifact's
 
 The [`run`] command will download the artifact Docker image, load it,
 and start a Docker container based on that image with this directory
-mounted in the container as `/mnt`. (You can place/edit any files you
-like in this directory to use them in the container; updates made
-outside the container will be seen immediately inside it.)
+mounted in the container as `/mnt`.
+- You can place/edit any files you like in this directory to use them
+  in the container; updates made outside the container will be seen
+  immediately inside it.
+- See the [`.gitignore`](.gitignore) file for where to place things
+  that you don't want coming up in your `git status` output. E.g.,
+  putting things under `tmp/` is handy because everything there is
+  ignored.
 
 There is a copy of the above paper in the container, in
 `/opt/proof-generation/paper.pdf`. You can copy this to `/mnt/` to
