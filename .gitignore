@@ -1,3 +1,6 @@
+#   Default output dir produced by `kompile` (though not psym or prove_symbolic)
+*-kompiled/
+
 /paper-23.tar.gz
 /sample/.*
 /sample/out.*/
