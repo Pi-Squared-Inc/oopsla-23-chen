@@ -24,7 +24,7 @@ cd "$PROJDIR"
 
 [[ -s $tarball ]] || {
     echo "===== Downloading image"
-    curl -L -O "https://zenodo.org/records/7503088/files/$tarball?download=1"
+    curl -L -O "https://zenodo.org/records/7503088/files/$tarball"
 }
 
 [[ $DR = *sudo* ]] && sudo -v -p '[sudo] password for %p (to run docker): '
