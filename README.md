@@ -4,13 +4,26 @@ Using the OOPSLA '23 Artifact
 The "artifact" is the Docker image distributed with the paper
 ["Generating Proof Certificates for a Language-Agnostic Deductive
 Program Verifier"][paper] by Lin, Chen, Trinh, Wang, Rosu. The paper's
-`README.md` is downloaded and committed here as [`ARTIFACT.md`].
+`README.md` is downloaded and committed here as [`ARTIFACT.md`][ar].
 
 The [`run`] command will download the artifact Docker image, load it,
 and start a Docker container based on that image with this directory
 mounted in the container as `/mnt`. (You can place/edit any files you
 like in this directory to use them in the container; updates made
 outside the container will be seen immediately inside it.)
+
+### Evaluation
+
+You may, if you wish, run the evaluation as described in the 'Getting
+Started" section of the [original README][r]. This is not required,
+however, and takes ten minutes or more to run. All other operations below
+work without this.
+
+    cd /opt/proof-generation/evaluation
+    make -j16           # Or approx. the number of cores/CPU threads you have
+    python3 stats.py    # Might not work without container-setup below
+
+### Symbolic Proofs
 
 When you enter the container you should first run the following to do
 some additional setup, including setting up convenient aliases for
@@ -32,6 +45,6 @@ appear in the `out.assign/` subdirectory.
 
 
 <!-------------------------------------------------------------------->
-[`ARTIFACT.md`]: ./ARTIFACT.md
+[ar]: ./ARTIFACT.md
 [`run`]: ./run
 [paper]: https://zenodo.org/records/7503088
