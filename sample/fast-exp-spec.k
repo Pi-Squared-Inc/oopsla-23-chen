@@ -2,7 +2,7 @@ requires "verification.k"
 
 module FAST-EXP-SPEC
 
-imports VERIFICATION
+imports VERIFICAITON
 
 syntax Id ::= "n" [token]
             | "k" [token]
