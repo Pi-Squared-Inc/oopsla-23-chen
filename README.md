@@ -49,8 +49,22 @@ and some programs written in it on which you can test this.
     psym imp.k IMP assign.imp --output out.assign/
     metamath out.assign/goal.mm         # give this REPL `verify proof *`
 
-You should see the final claim appear, and a number of Metamath (`*.mm`) files
-appear in the `out.assign/` subdirectory.
+You should see the final claim appear, and a number of Metamath (`*.mm`)
+files appear in the `out.assign/` subdirectory. `goal.mm` is the top level
+of the output and the top-level proof is `goal $p |- … $= … $.` at the end
+of that file. `goal.mm` also starts an include chain of files in
+`out.assign/` and eventually `theory/`; tracing through this include chain
+can give some sense of the overall structure.
+
+The intermediate files of this process are somewhat hidden under
+`.ml-proof-cache-imp/`. These are in two components:
+- `rewriting-task-*.yml`: These should contain the hints produced by the
+  parsing of the `*` program, though they are currently empty. The system
+  is apparently capable of producing the hints, but it's not clear how to
+  make it do that.
+- `imp-kompiled/`: The standard K `kompile` output directory for a language
+  definition. Note that this does not include anything related to the
+  program run in that language, just the language itself.
 
 
 
