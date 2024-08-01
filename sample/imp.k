@@ -24,7 +24,7 @@ module IMP-SYNTAX
 
 endmodule
 
-module VERIFICAITON
+module VERIFICATION
 
 imports DOMAINS
 
@@ -35,7 +35,7 @@ endmodule
 module IMP
   imports IMP-SYNTAX
   imports DOMAINS
-  imports VERIFICAITON
+  imports VERIFICATION
 
   syntax KResult ::= Int | Bool
 
