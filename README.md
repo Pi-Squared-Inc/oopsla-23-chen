@@ -64,7 +64,11 @@ The intermediate files of this process are somewhat hidden under
   make it do that.
 - `imp-kompiled/`: The standard K `kompile` output directory for a language
   definition. Note that this does not include anything related to the
-  program run in that language, just the language itself.
+  program run in that language, just the language itself. These include:
+  - `definition.kore`: Used to generate the interpreter.
+  - `syntaxDefinition.kore`: Facilitates the pretty-printer.
+  - `parsed.txt`: (for humans only) KAST of the language at the parsing stage.
+  - `compiled.txt`: (for humans only) KAST of the language at the compile stage.
 
 
 
